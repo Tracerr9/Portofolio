@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alvin Jonathan — Systems Analyst & Application Developer</title>
+  <meta name="description" content="Technical portfolio and system case studies of Alvin Jonathan. Focused on enterprise systems, data integrity, and operational workflows.">
+
+  <style>
+    :root {
+      --bg: #faf9f6;
+      --surface: #ffffff;
+      --text-main: #1a1a1a;
+      --text-muted: #5e5e5e;
+      --text-subtle: #7a7a7a;
+      --border: #e3e3df;
+      --border-dark: #1a1a1a;
+      --tag-bg: #f2f1ec;
+      --tag-border: #dedcd4;
+      --status-active: #16a34a;
+      --btn-bg: #1a1a1a;
+      --btn-text: #ffffff;
+      --btn-hover: #333333;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Helvetica Neue", Arial, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --container-max: 760px;
+      --radius: 4px;
+      --transition: all 0.15s ease-in-out;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    ::selection {
+      background-color: var(--text-main);
+      color: var(--bg);
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--text-main);
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    p {
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: var(--text-main);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .doc-container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .doc-nav-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(250, 249, 246, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .doc-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 54px;
+      gap: 1rem;
+    }
+
+    .nav-brand {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.92rem;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav-brand-prefix {
+      color: var(--text-subtle);
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 1.25rem;
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      padding: 0.25rem 0;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-link:hover {
+      color: var(--text-main);
+      border-bottom-color: var(--text-main);
+    }
+
+    main {
+      flex: 1;
+      padding: 2.5rem 0 4rem;
+    }
+
+    .doc-section {
+      padding: 2.75rem 0 0;
+      margin-top: 2.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .doc-section:first-of-type {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .section-title {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-subtle);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-title::before {
+      content: "//";
+      color: var(--text-subtle);
+    }
+
+    .section-count {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-subtle);
+      background-color: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      padding: 0.1rem 0.4rem;
+      border-radius: var(--radius);
+    }
+
+    .hero-profile {
+      padding: 1rem 0 0.5rem;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius);
+      margin-bottom: 1.25rem;
+      width: fit-content;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background-color: var(--status-active);
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2);
+    }
+
+    .hero-name {
+      font-size: 2.15rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-role {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-bio {
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.6rem 1.15rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+
+    .btn-contrast {
+      background-color: var(--btn-bg);
+      color: var(--btn-text);
+      border-color: var(--border-dark);
+      box-shadow: 2px 2px 0px rgba(26, 26, 26, 0.15);
+    }
+
+    .btn-contrast:hover {
+      background-color: var(--btn-hover);
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 3px 3px 0px rgba(26, 26, 26, 0.25);
+    }
+
+    .btn-outline {
+      background-color: var(--surface);
+      color: var(--text-main);
+      border-color: var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--border-dark);
+      background-color: #f7f6f0;
+      transform: translateY(-1px);
+    }
+
+    .tag-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.85rem;
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-main);
+      background-color: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius);
+      white-space: nowrap;
+    }
+
+    .card-block {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.35rem;
+      transition: var(--transition);
+    }
+
+    .card-block:hover {
+      border-color: var(--border-dark);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .card-subtitle {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    .card-meta {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-subtle);
+      white-space: nowrap;
+      background-color: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius);
+    }
+
+    .card-desc {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    .card-desc ul {
+      padding-left: 1.2rem;
+      margin-top: 0.35rem;
+    }
+
+    .card-desc li {
+      margin-bottom: 0.35rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .skill-title {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .skill-title::before {
+      content: "•";
+      color: var(--text-subtle);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.65rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background-color: var(--surface);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--text-main);
+      transition: var(--transition);
+    }
+
+    .contact-item:hover {
+      border-color: var(--border-dark);
+      transform: translateY(-1px);
+    }
+
+    .doc-footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      margin-top: auto;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .icon {
+      width: 14px;
+      height: 14px;
+      stroke-width: 2;
+      stroke: currentColor;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    @media (max-width: 640px) {
+      .doc-nav .nav-links {
+        display: none;
+      }
+      .hero-name {
+        font-size: 1.85rem;
+      }
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn {
+        width: 100%;
+      }
+      .card-header {
+        flex-direction: column;
+        gap: 0.35rem;
+      }
+      .card-meta {
+        align-self: flex-start;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .doc-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="doc-nav-wrapper">
+    <div class="doc-container">
+      <nav class="doc-nav" aria-label="Main Navigation">
+        <a href="#" class="nav-brand" title="Alvin Jonathan Portfolio">
+          Alvin
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="doc-container">
+    <main>
+
+      <section class="hero-profile" id="about">
+        <h1 class="hero-name">Alvin Jonathan</h1>
+        <div class="hero-role">Systems Analyst / Application Developer</div>
+
+        <p class="hero-bio">
+          Undergraduate Computer Science student at Bina Nusantara University building relational database schemas and operational accounting software. Focused on SQL Server data integrity, double-entry ledgers, and property development workflows.
+        </p>
+
+        <div class="hero-actions">
+          <a href="CV_2.pdf" class="btn btn-contrast" download title="Download CV Alvin Jonathan">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Full CV (PDF)
+          </a>
+
+          <a href="#contact" class="btn btn-outline">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Get in Touch
+          </a>
+        </div>
+      </section>
+
+      <section class="doc-section" id="projects">
+        <div class="section-header">
+          <h2 class="section-title">System Case Studies & Projects</h2>
+          <span class="section-count">Core System</span>
+        </div>
+
+        <article class="card-block">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Accounting System for Property Developer</h3>
+            </div>
+            <span class="card-meta">Production Case</span>
+          </div>
+
+          <div class="card-desc">
+            <p>Designed and built an end-to-end accounting system to eliminate manual reconciliation errors, streamline billing schedules, and enforce double-entry audit trails across property developments:</p>
+            <ul>
+              <li><strong>General Ledger & Reporting:</strong> Implemented balance sheet and profit & loss modules with automated period-closing logic and strict double-entry bookkeeping.</li>
+              <li><strong>AR & AP:</strong> Developed Accounts Receivable and Payable workflows with aging and transaction report.</li>
+              <li><strong>T-SQL Architecture:</strong> Implemented parameterized stored procedures, CTEs, and table indexing to control CRUD throughput while preventing SQL injection and optimize report extraction.</li>
+              <li><strong>Role-Based Access Control (Type 0):</strong> Enforced role-based access controls to govern transactional permissions down to specific page-level operations and approval actions.</li>
+            </ul>
+          </div>
+
+          <div class="tag-group">
+            <span class="tag">.NET Razor Pages</span>
+            <span class="tag">C#</span>
+            <span class="tag">SQL Server (T-SQL)</span>
+            <span class="tag">ADO.NET</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="doc-section" id="experience">
+        <div class="section-header">
+          <h2 class="section-title">Work Experience</h2>
+          <span class="section-count">Implementation</span>
+        </div>
+
+        <article class="card-block">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Software Developer</h3>
+              <div class="card-subtitle">MSI (Media Sistem Integrasi) - Jakarta Barat</div>
+            </div>
+            <span class="card-meta">May 2025 — Present</span>
+          </div>
+
+          <div class="card-desc">
+          <p>Built property accounting and operations management software for real estate developer clients based on operational briefs and client revision trackers:
+          </p>
+            <ul>
+              <li><strong>Greenfield Module Development:</strong> Designed database tables and built end-to-end workflows for General Ledger, Accounts Receivable/Payable, and unit legality tracking.</li>
+              <li><strong>Construction Progress & Billing Logic:</strong> Developed SPK milestone validation based on structural completion weight percentages to control contractor disbursement schedules.</li>
+              <li><strong>Change Request Execution:</strong> Translated operational punch-lists directly into software features, including COGS recalculations, sales agent parameter tracking, and unit handover milestone logging.</li>
+            </ul>
+          </div>
+
+          <div class="tag-group">
+            <span class="tag">C#</span>
+            <span class="tag">ASP.NET Core</span>
+            <span class="tag">T-SQL Stored Procedures</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="doc-section" id="skills">
+        <div class="section-header">
+          <h2 class="section-title">Technical Competencies</h2>
+          <span class="section-count">Structured</span>
+        </div>
+
+        <div class="skills-grid">
+          <div class="card-block">
+            <h3 class="skill-title">Languages & Frameworks</h3>
+            <div class="tag-group">
+              <span class="tag">C#</span>
+              <span class="tag">SQL (T-SQL)</span>
+              <span class="tag">.NET Razor Pages</span>
+              <span class="tag">ADO.NET</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">HTML / CSS</span>
+            </div>
+          </div>
+
+          <div class="card-block">
+            <h3 class="skill-title">Database & Development Tools</h3>
+            <div class="tag-group">
+              <span class="tag">Microsoft SQL Server</span>
+              <span class="tag">SSMS</span>
+              <span class="tag">Visual Studio 2022</span>
+              <span class="tag">Git / GitHub</span>
+            </div>
+          </div>
+
+         
+        </div>
+      </section>
+
+      <section class="doc-section" id="contact">
+        <div class="section-header">
+          <h2 class="section-title">Direct Contact</h2>
+          <span class="section-count">Communication</span>
+        </div>
+
+        <div class="card-block">
+          <p class="card-desc">
+            Available for technical and analytical internships in Jakarta or remote/hybrid positions. Direct inquiries:
+          </p>
+
+          <div class="contact-grid">
+            <a href="mailto:jonathan.alvin2019@gmail.com" class="contact-item">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>Email</span>
+            </a>
+
+            <a href="https://linkedin.com/in/alvin-jonathan-7244a0327/" class="contact-item" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              <span>LinkedIn</span>
+            </a>
+
+            <a href="https://github.com/Tracerr9" class="contact-item" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              <span>Github</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="doc-footer">
+      <div>
+        <span>ALVIN JONATHAN</span> • <span>BINUS UNIVERSITY</span>
+      </div>
+      <div>
+        <!-- <span>Technical Documentation Layout</span> -->
+      </div>
+    </footer>
+  </div>
+
+</body>
+</html>
